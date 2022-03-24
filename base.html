@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <section>
+        <h2>Challenge the computer</h2>
+        <h3>Select one of the below items</h3>
+        <button class="select" value="rock">Rock</button>
+        <button class="select" value="paper">Paper</button>
+        <button class="select" value="scissors">Scissors</button>
+        <div id="winning">
+
+        </div>
+    </section>
+</body>
+<script>
+    let btns = document.getElementsByClassName("select");
+    let winningDiv = document.getElementById("winning");
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    let items = ["rock", "paper", "scissors"]
+
+    addEventListener("click", function (e) {
+        if (e.target.value == null) {
+            return
+        }
+
+        if (winningDiv.childNodes.length != 0) {
+            winningDiv.removeChild(winningDiv.childNodes[0])
+        }
+
+        let computerInput = items[getRandomInt(3)]
+
+        if (e.target.value == computerInput) {
+            let element = document.createElement("p")
+            element.innerText = "It was a draw"
+            winningDiv.appendChild(element)
+        }
+
+        else if (e.target.value == "rock" && computerInput == "paper") {
+            let element = document.createElement("p")
+            element.innerText = "Computer won the round with " + computerInput
+            winningDiv.appendChild(element)
+        }
+
+        else if (e.target.value == "paper" && computerInput == "scissors") {
+            let element = document.createElement("p")
+            element.innerText = "Computer won the round with " + computerInput
+            winningDiv.appendChild(element)
+        }
+
+        else if (e.target.value == "scissors" && computerInput == "rock") {
+            let element = document.createElement("p")
+            element.innerText = "Computer won the round with " + computerInput
+            winningDiv.appendChild(element)
+        }
+
+        else {
+            let element = document.createElement("p")
+            element.innerText = "You won the round, the computer chose " + computerInput
+            winningDiv.appendChild(element)
+        }
+    })
+</script>
+
+</html>
